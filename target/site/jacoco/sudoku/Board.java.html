@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Board.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sudoku</a> &gt; <a href="index.source.html" class="el_package">sudoku</a> &gt; <span class="el_source">Board.java</span></div><h1>Board.java</h1><pre class="source lang-java linenums">package sudoku;
+
+<span class="fc" id="L3">public class Board {</span>
+
+<span class="fc" id="L5">    private int[][] grid = new int[9][9];</span>
+
+    public boolean isValidMove(int row, int col, int value) {
+<span class="pc bpc" id="L8" title="2 of 4 branches missed.">        if (value &lt; 1 || value &gt; 9) {</span>
+<span class="nc" id="L9">            return false;</span>
+        }
+
+<span class="fc bfc" id="L12" title="All 2 branches covered.">        for (int c = 0; c &lt; 9; c++) {</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">            if (grid[row][c] == value) {</span>
+<span class="fc" id="L14">                return false;</span>
+            }
+        }
+
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (int r = 0; r &lt; 9; r++) {</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">            if (grid[r][col] == value) {</span>
+<span class="fc" id="L20">                return false;</span>
+            }
+        }
+
+<span class="fc" id="L24">        int startRow = (row / 3) * 3;</span>
+<span class="fc" id="L25">        int startCol = (col / 3) * 3;</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (int r = startRow; r &lt; startRow + 3; r++) {</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            for (int c = startCol; c &lt; startCol + 3; c++) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">                if (grid[r][c] == value) {</span>
+<span class="fc" id="L30">                    return false;</span>
+                }
+            }
+        }
+
+<span class="fc" id="L35">        return true;</span>
+    }
+
+    public boolean isComplete() {
+<span class="nc" id="L39">        return false;</span>
+    }
+
+    public int[][] getGrid() {
+<span class="fc" id="L43">        return grid;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
