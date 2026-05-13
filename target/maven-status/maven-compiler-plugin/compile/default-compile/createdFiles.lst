@@ -1,0 +1,5 @@
+sudoku\Board.class
+sudoku\Main.class
+sudoku\SudokuGame.class
+sudoku\SudokuGenerator.class
+sudoku\Difficulty.class
