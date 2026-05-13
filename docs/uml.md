@@ -1,30 +1,45 @@
-# UML - Sudoku
+# UML del Proyecto
+
+## Diagrama de clases
 
 ```mermaid
 classDiagram
     class Board {
         -int[][] grid
-        +boolean isValidMove(int row, int col, int value)
-        +boolean isComplete()
-        +int[][] getGrid()
-    }
-
-    class SudokuGenerator {
-        +int[][] generateFullBoard()
-        +int[][] removeCells(int[][] board, Difficulty difficulty)
+        +getGrid()
+        +getCell()
+        +setCell()
     }
 
     class SudokuGame {
         -Board board
         -int mistakes
-        -long startTime
-        +start(Difficulty difficulty)
+        -Difficulty difficulty
+        +makeMove()
         +solve()
-        +int getMistakes()
+        +isComplete()
+        +isGameOver()
     }
 
-    class Difficulty {
+    class SudokuGenerator {
+        +generate()
+        -fillBoard()
+        -removeCells()
     }
 
-    SudokuGame --> Board
-    SudokuGame --> SudokuGenerator
+    class SudokuSolver {
+        +solve()
+        -isValid()
+    }
+
+    class SudokuUI {
+        -SudokuGame game
+        -JTextField[][] cells
+        +startNewGame()
+        +loadBoard()
+    }
+
+    Board --> SudokuGame
+    SudokuGenerator --> SudokuGame
+    SudokuSolver --> SudokuGame
+    SudokuUI --> SudokuGame
